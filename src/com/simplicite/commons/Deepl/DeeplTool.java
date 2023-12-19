@@ -35,9 +35,38 @@ public class DeeplTool implements java.io.Serializable {
 	 * @return the translated text as a String
 	 * @throws HTTPException if an error occurs during the API call
 	 */
+	private static HashMap<String, String> isoToDeeplMap;
+	static {
+		isoToDeeplMap = new HashMap<>();
+		isoToDeeplMap.put("CZE", "CS");
+		isoToDeeplMap.put("GER", "DE");
+		isoToDeeplMap.put("ENU", "EN");
+		isoToDeeplMap.put("ESP", "ES");
+		isoToDeeplMap.put("FRA", "FR");
+		isoToDeeplMap.put("HUN", "HU");
+		isoToDeeplMap.put("ITA", "IT");
+		isoToDeeplMap.put("JPN", "JA");
+		isoToDeeplMap.put("KOR", "KO");
+		isoToDeeplMap.put("DUT", "NL");
+		isoToDeeplMap.put("POL", "PL");
+		isoToDeeplMap.put("POR", "PT");
+		isoToDeeplMap.put("RUM", "RO");
+		isoToDeeplMap.put("RUS", "RU");
+		isoToDeeplMap.put("SLO", "SK");
+		isoToDeeplMap.put("TUR", "TR");
+		isoToDeeplMap.put("UKR", "UK");
+		isoToDeeplMap.put("CHI", "ZH");
+
+	}
 	public static String callDeepl(List<String> sentences,String lang,Grant g) throws HTTPException{
+		return callDeepl(sentences,null, lang, g);
+	}
+	public static String callDeepl(List<String> sentences,String fromLang,String lang,Grant g) throws HTTPException{
 		try {
 			JSONObject requestBody = new JSONObject().put("text", sentences ).put("target_lang",lang);
+			if(!Tool.isEmpty(fromLang)){
+				requestBody.put("source_lang", fromLang);
+			}
             HttpResponse<JsonNode> response = Unirest.post("https://api-free.deepl.com/v2/translate")
 					.header("Authorization", "DeepL-Auth-Key " + DEEPL_AUTH_KEY)
                     //.header("User-Agent", "deeplSimplicite/1.2.3")
@@ -188,5 +217,8 @@ public class DeeplTool implements java.io.Serializable {
 				return  objTrad.search().get(0)[objTrad.getFieldIndex("lov_label")];
 			}
 		}
+	}
+	public static String isoToDeepl(String iso) {
+		return isoToDeeplMap.get(iso);
 	}
 }

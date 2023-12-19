@@ -2,6 +2,8 @@ package com.simplicite.workflows.Deepl;
 
 import java.util.*;
 
+import org.json.JSONObject;
+
 import com.simplicite.bpm.*;
 import com.simplicite.commons.Deepl.DeeplTool;
 import com.simplicite.util.*;
@@ -19,6 +21,7 @@ public class DeeplObjectTra extends Processus {
 	private static final String ACTIVITY_LANG  ="DOT-0200";
 	//private static final String ACTIVITY_VALIDATE  ="DOT-0300";
 	//private static final String ACTIVITY_TRANSLATE  ="DOT-0400";
+	private static final String TSL_LANG_FIELD  ="tsl_lang";
 	/**
 	 * Returns the HTML representation of the language selection table.
 	 *
@@ -63,7 +66,7 @@ public class DeeplObjectTra extends Processus {
 			return "";
 		}
 		int count = charCount(p,g);
-		return g.getLang().equals(Globals.LANG_FRENCH)?"Nombre estimée de caractères : ":"Estimated number of characters :"+count;
+		return g.getLang().equals(Globals.LANG_FRENCH)?"Nombre estimée de caractères : "+count+"<br> <input type=\"checkbox\" id=\"update\" name=\"update\"/> Mettre à jour les traductions existantes":"Estimated number of characters :"+count+"<br> <input type=\"checkbox\" id=\"update\" name=\"update\"/> Update existing translations";
 	}
 	/**
 	 * Calculates the total character count of the values in the specified process and grant.
@@ -102,6 +105,7 @@ public class DeeplObjectTra extends Processus {
 		String[] tradIds = getContext(p.getActivity(ACTIVITY_SELECT_TRANSLATION)).getDataFile("Field", "row_id", true).getValues();
 		String langTo = getContext(p.getActivity(ACTIVITY_LANG)).getDataValue("Data", "deeTrdLanguage");
 		String langToIso= DeeplTool.getISOCode("DEEPL_LANG", langTo, g);
+		boolean update = Tool.isEmpty(getContext(p.getActivity(ACTIVITY_LANG)).getDataValue("Data", "update"));
 		// check if lang exist in usr lang
 		DeeplTool.addLangList("LANG",langToIso,g);
 		DeeplTool.addLangList("LANG_ALL",langToIso,g);
@@ -112,18 +116,31 @@ public class DeeplObjectTra extends Processus {
 				for (String id : tradIds) {
 					
 					objT.selectForCopy(id,true);
-					
-					obj.setFieldValue("tsl_lang", langToIso);
 					String value = obj.getFieldValue(TSL_VALUE_FIELD);
-					ArrayList<String> sentences = new ArrayList<>();
-					if(!Tool.isEmpty(value)){
-						sentences.add(value);
-						value = DeeplTool.callDeepl(sentences, langTo, g);
+					String fromLang = DeeplTool.isoToDeepl(obj.getFieldValue(TSL_LANG_FIELD));
+					JSONObject filters = new JSONObject().put("tsl_object", obj.getFieldValue("tsl_object")).put(TSL_LANG_FIELD, langToIso);
+					List<String[]> row = objT.search(filters);
+					if(Tool.isEmpty(row)){
+						obj.setFieldValue("tsl_lang", langToIso);
+						ArrayList<String> sentences = new ArrayList<>();
+						if(!Tool.isEmpty(value)){
+							sentences.add(value);
+							value = DeeplTool.callDeepl(sentences, fromLang, langTo, g);
+						}
+						obj.setFieldValue(TSL_VALUE_FIELD, value);
+						objT.validateAndCreate();
+					}else if(update){
+						objT.select(row.get(0)[obj.getRowIdFieldIndex()]);
+						ArrayList<String> sentences = new ArrayList<>();
+						if(!Tool.isEmpty(value)){
+							sentences.add(value);
+							value = DeeplTool.callDeepl(sentences, fromLang, langTo, g);
+						}
+						obj.setFieldValue(TSL_VALUE_FIELD, value);
+						objT.validateAndUpdate();
 					}
-					obj.setFieldValue(TSL_VALUE_FIELD, value);
-					objT.validateAndCreate();
 				}
-			} catch (GetException | HTTPException | CreateException | ValidateException e) {
+			} catch (GetException | HTTPException | CreateException | ValidateException | SearchException | UpdateException e) {
 				AppLog.error(e, g);
 				return g.getText("DEE_ERROR_TRANSLATE");
 			}

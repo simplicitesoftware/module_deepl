@@ -20,12 +20,12 @@ FieldListValue translation
 
 ### Activities
 
-* `SelectTranslation`: 
-* `Lang`: 
-* `Validate`: 
-* `Translate`: 
+* `SelectTranslation`: Selecting objects for translation
+* `Lang`: Selection of the language to translate into
+* `Validate`: Indicator of the number of characters  to translate and option to update existing translations
+* `Translate`: Translation of objects
 * `Begin`: 
-* `End`: 
+* `End`: Redirect to clear cache
 
 `DeeplModuleTrad` business process definition
 ---------------------------------------------
@@ -34,12 +34,12 @@ Translation of a Module
 
 ### Activities
 
+* `SelectModule`: Selecting module to translate
+* `SelectLang`: Selection of the language from and to translate into
+* `Validation`: Indicator of the number of characters  to translate and option to update existing translations
+* `TraductionProcess`: Translation of the module
 * `Begin`: 
-* `End`: 
-* `SelectModule`: 
-* `SelectLang`: 
-* `Validation`: 
-* `TraductionProcess`: 
+* `End`: Redirect to clear cache
 
 `DeeplObjectTra` business process definition
 --------------------------------------------
@@ -48,12 +48,12 @@ Translate Translation
 
 ### Activities
 
-* `SelectTranslation`: 
-* `Lang`: 
-* `Validate`: 
-* `Translate`: 
+* `SelectTranslation`: Selecting objects for translation
+* `Lang`: Selection of the language to translate into
+* `Validate`: Indicator of the number of characters  to translate and option to update existing translations
+* `Translate`: Translation of objects
 * `Begin`: 
-* `End`: 
+* `End`: Redirect to clear cache
 
 `DeeplStaticTextTra` business process definition
 ------------------------------------------------
@@ -62,10 +62,10 @@ ListOfValue translation
 
 ### Activities
 
-* `SelectTranslation`: 
-* `Lang`: 
-* `Validate`: 
-* `Translate`: 
+* `SelectTranslation`: Selecting objects for translation
+* `Lang`: Selection of the language to translate into
+* `Validate`: Indicator of the number of characters  to translate and option to update existing translations
+* `Translate`: Translation of objects
 * `Begin`: 
-* `End`: 
+* `End`: Redirect to clear cache
 

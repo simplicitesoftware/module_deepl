@@ -26,10 +26,10 @@ public class DeeplModuleTrad extends Processus {
 	private static final String LOV_LANG_FIELD ="lov_lang";
 	private static final String LOV_VALUE_FIELD ="lov_value";
 	private static final String LOV_CODE_ID_FIELD ="lov_code_id";
-	private static final String ACTIVITY_SELECT_MODULE ="DMT_0100";
-	private static final String ACTIVITY_SELECT_LANG ="DMT_0200";
-	private static final String ACTIVITY_VALIDATION ="DMT_0250";
-	//private static final String ACTIVITY_TRADUCTION_PROCESS ="DMT_0300";
+	private static final String ACTIVITY_SELECT_MODULE ="DMT-0100";
+	private static final String ACTIVITY_SELECT_LANG ="DMT-0200";
+	private static final String ACTIVITY_VALIDATION ="DMT-0250";
+	//private static final String ACTIVITY_TRADUCTION_PROCESS ="DMT-0300";
 	/**
 	 * User validation of translate process.
 	 * 
@@ -111,18 +111,20 @@ public class DeeplModuleTrad extends Processus {
 	 */
 	private String translationProcess(Processus p,boolean update, Grant g){
 		String langfrom = getContext(p.getActivity(ACTIVITY_SELECT_LANG)).getDataValue("Data", TSL_LANG_FIELD);
+		String langFromDeepl = DeeplTool.isoToDeepl(langfrom);
 		String langTo = getContext(p.getActivity(ACTIVITY_SELECT_LANG)).getDataValue("Data", "deeTrdLanguage");
 		String langToIso=  DeeplTool.getISOCode("DEEPL_LANG", langTo, g);
 		String moduleID = getContext(p.getActivity(ACTIVITY_SELECT_MODULE)).getDataValue("Field", "row_id");
+		
 		// check if lang exist in usr lang
 
 		DeeplTool.addLangList("LANG",langToIso,g);
 		DeeplTool.addLangList("LANG_ALL",langToIso,g);
 		//get instance of Translate object
 		try{
-			translationObject(g, moduleID, langfrom, langTo, langToIso, update);
-			translationList(g, moduleID, langfrom, langTo, langToIso, update);
-			translationStaticText(g, moduleID, langfrom, langTo, langToIso, update);
+			translationObject(g, moduleID, langfrom, langFromDeepl, langTo, langToIso, update);
+			translationList(g, moduleID, langfrom, langFromDeepl, langTo, langToIso, update);
+			translationStaticText(g, moduleID, langfrom, langFromDeepl, langTo, langToIso, update);
 		} catch ( UpdateException | CreateException | JSONException | ValidateException | GetException | HTTPException e) {
 			AppLog.error(e, g);
 			
@@ -132,7 +134,8 @@ public class DeeplModuleTrad extends Processus {
 		return  g.getText("DEE_END_TRANSLATE");
 	}
 	
-	private String translationObject(Grant g,String moduleID,String langfrom, String langTo, String langToIso, boolean update) throws UpdateException, CreateException, GetException, HTTPException, ValidateException, JSONException{
+	private String translationObject(Grant g,String moduleID,String langfrom, String langFromDeepl, String langTo, String langToIso, boolean update) throws UpdateException, CreateException, GetException, HTTPException, ValidateException, JSONException{
+		
 		ObjectDB obj = g.getTmpObject("Translate");
 		BusinessObjectTool objT = obj.getTool();		
 		synchronized(obj.getLock()){
@@ -145,23 +148,23 @@ public class DeeplModuleTrad extends Processus {
 				JSONObject json = new JSONObject().put("tsl_object", row[obj.getFieldIndex("tsl_object")]).put(TSL_LANG_FIELD, langToIso).put(ROW_MODULE_ID_FIELD, row[obj.getFieldIndex(ROW_MODULE_ID_FIELD)]);
 				if(objT.selectForCreateOrUpdate(json)){
 					if((update || Tool.isEmpty(obj.getFieldValue(TSL_VALUE_FIELD)))){
-						tradObjectField(obj,TSL_VALUE_FIELD, langTo ,value, g);
+						tradObjectField(obj,TSL_VALUE_FIELD, langFromDeepl, langTo ,value, g);
 					}
 					if((update || Tool.isEmpty(obj.getFieldValue(TSL_PLURAL_VALUE_FIELD)))){
-						tradObjectField(obj,TSL_PLURAL_VALUE_FIELD, langTo, valuePlural, g);
+						tradObjectField(obj,TSL_PLURAL_VALUE_FIELD, langFromDeepl, langTo, valuePlural, g);
 					}
 					objT.validateAndUpdate();
 				}else{//if create
 					obj.setValuesFromJSONObject(json, false, false);
-					tradObjectField(obj,TSL_VALUE_FIELD, langTo, value, g);
-					tradObjectField(obj,TSL_PLURAL_VALUE_FIELD, langTo, valuePlural, g);
+					tradObjectField(obj,TSL_VALUE_FIELD, langFromDeepl, langTo, value, g);
+					tradObjectField(obj,TSL_PLURAL_VALUE_FIELD, langFromDeepl, langTo, valuePlural, g);
 					objT.validateAndCreate();
 				}
 			}
 		}
 		return "";
 	}
-	private void translationStaticText(Grant g,String moduleID,String langfrom, String langTo, String langToIso, boolean update) throws UpdateException, CreateException, GetException, HTTPException, ValidateException{
+	private void translationStaticText(Grant g,String moduleID,String langfrom, String langFromDeepl, String langTo, String langToIso, boolean update) throws UpdateException, CreateException, GetException, HTTPException, ValidateException{
 		ObjectDB obj = g.getTmpObject("ListOfValue");
 		BusinessObjectTool objT = obj.getTool();		
 		synchronized(obj.getLock()){
@@ -180,7 +183,7 @@ public class DeeplModuleTrad extends Processus {
 						
 						List<String> sentences = new ArrayList<>();
 						sentences.add(value);
-						value = DeeplTool.callDeepl(sentences, langTo, g);
+						value = DeeplTool.callDeepl(sentences, langFromDeepl, langTo, g);
 						obj.setFieldValue(LOV_VALUE_FIELD, value);
 						
 					}
@@ -190,7 +193,7 @@ public class DeeplModuleTrad extends Processus {
 					if(!Tool.isEmpty(value)){
 						List<String> sentences = new ArrayList<>();
 						sentences.add(value);
-						value = DeeplTool.callDeepl(sentences, langTo, g);
+						value = DeeplTool.callDeepl(sentences, langFromDeepl, langTo, g);
 						obj.setFieldValue(LOV_VALUE_FIELD, value);
 					}
 					objT.validateAndCreate();
@@ -198,16 +201,16 @@ public class DeeplModuleTrad extends Processus {
 			}
 		}
 	}
-	private void tradObjectField(ObjectDB obj,String field, String langTo ,String value, Grant g) throws HTTPException{
+	private void tradObjectField(ObjectDB obj,String field, String langFromDeepl, String langTo ,String value, Grant g) throws HTTPException{
 		
 		if(!Tool.isEmpty(value)){
 			List<String> sentences = new ArrayList<>();
 			sentences.add(value);
-			obj.setFieldValue(field, DeeplTool.callDeepl(sentences, langTo, g));
+			obj.setFieldValue(field, DeeplTool.callDeepl(sentences, langFromDeepl, langTo, g));
 		}
 	}
 	
-	private String translationList(Grant g,String moduleID,String langfrom, String langTo, String langToIso, boolean update) throws UpdateException, CreateException, GetException, JSONException, HTTPException, ValidateException{
+	private String translationList(Grant g,String moduleID,String langfrom, String langFromDeepl, String langTo, String langToIso, boolean update) throws UpdateException, CreateException, GetException, JSONException, HTTPException, ValidateException{
 		ObjectDB obj = g.getTmpObject("FieldListValue");
 		BusinessObjectTool objT = obj.getTool();
 		synchronized(obj.getLock()){
@@ -220,7 +223,7 @@ public class DeeplModuleTrad extends Processus {
 					if(update){
 						List<String> sentences = new ArrayList<>();
 						sentences.add(value);
-						value = DeeplTool.callDeepl(sentences, langTo, g);
+						value = DeeplTool.callDeepl(sentences, langFromDeepl, langTo, g);
 						obj.setFieldValue(LOV_VALUE_FIELD, value);
 						objT.validateAndUpdate();
 					}
@@ -228,7 +231,7 @@ public class DeeplModuleTrad extends Processus {
 				}else{//if create
 					List<String> sentences = new ArrayList<>();
 					sentences.add(value);
-					value = DeeplTool.callDeepl(sentences, langTo, g);
+					value = DeeplTool.callDeepl(sentences, langFromDeepl, langTo, g);
 					obj.setFieldValue(LOV_CODE_ID_FIELD, row[obj.getFieldIndex(LOV_CODE_ID_FIELD)]);
 					obj.setFieldValue(LOV_LANG_FIELD, langToIso);
 					obj.setFieldValue(ROW_MODULE_ID_FIELD, row[obj.getFieldIndex(ROW_MODULE_ID_FIELD)]);
