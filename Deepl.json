@@ -7,10 +7,40 @@
   "mdl_version": "0.1",
   "mdl_type": null,
   "mdl_icon": null,
-  "mdl_url": "{\n\t\"type\": \"git\",\n\t\"origin\": {\n\t\t\"uri\": \"https://github.com/simplicitesoftware/module_deepl.git\",\n\t\n\t\t\n\t}\n}",
+  "mdl_url": "{\n\t\"type\": \"git\",\n\t\"origin\": {\n\t\t\"uri\": \"https://github.com/simplicitesoftware/module_deepl.git\",\n\t\t\n\t\t\n\t}\n}",
   "mdl_comment": "Deepl integration for automatic translation"
  },
  "links": [
+  {
+   "object": "SystemParam",
+   "label": "System parameters",
+   "icon": "img/system/system_param",
+   "field": "row_module_id",
+   "list": [
+    {
+     "object": "SystemParam",
+     "userkey": "DEEPL_API_KEY",
+     "item": {
+      "sys_code": "DEEPL_API_KEY",
+      "sys_value": "/",
+      "sys_type": "PRV",
+      "sys_desc": "Deepl API key",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "SystemParam",
+     "userkey": "DEEPL_API_URL",
+     "item": {
+      "sys_code": "DEEPL_API_URL",
+      "sys_value": "https://api-free.deepl.com/v2/translate",
+      "sys_type": "PRV",
+      "sys_desc": "Deepl API url",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    }
+   ]
+  },
   {
    "object": "View",
    "label": "Views",
@@ -549,34 +579,23 @@
    "list": [
     {
      "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~CS~ENU",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "CS",
-      "lov_lang": "ENU",
-      "lov_value": "Czech",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~ES~ENU",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "ES",
-      "lov_lang": "ENU",
-      "lov_value": "Spanish",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "FieldListValue",
      "userkey": "DEEPL_LANG~SK~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
       "lov_code_id__lov_code": "SK",
       "lov_lang": "ENU",
       "lov_value": "Slovak",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "DEEPL_LANG~CS~ENU",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
+      "lov_code_id__lov_code": "CS",
+      "lov_lang": "ENU",
+      "lov_value": "Czech",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -593,12 +612,56 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~JA~ENU",
+     "userkey": "DEEPL_LANG~ES~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "JA",
+      "lov_code_id__lov_code": "ES",
       "lov_lang": "ENU",
-      "lov_value": "Japanese",
+      "lov_value": "Spanish",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "DEEPL_LANG~PL~ENU",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
+      "lov_code_id__lov_code": "PL",
+      "lov_lang": "ENU",
+      "lov_value": "Polish",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "DEEPL_LANG~RU~ENU",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
+      "lov_code_id__lov_code": "RU",
+      "lov_lang": "ENU",
+      "lov_value": "Russian",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "DEEPL_LANG~RO~ENU",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
+      "lov_code_id__lov_code": "RO",
+      "lov_lang": "ENU",
+      "lov_value": "Romanian",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "DEEPL_LANG~KO~ENU",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
+      "lov_code_id__lov_code": "KO",
+      "lov_lang": "ENU",
+      "lov_value": "Korean",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -626,45 +689,12 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~RU~ENU",
+     "userkey": "DEEPL_LANG~JA~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "RU",
+      "lov_code_id__lov_code": "JA",
       "lov_lang": "ENU",
-      "lov_value": "Russian",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~KO~ENU",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "KO",
-      "lov_lang": "ENU",
-      "lov_value": "Korean",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~RO~ENU",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "RO",
-      "lov_lang": "ENU",
-      "lov_value": "Romanian",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~PL~ENU",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "PL",
-      "lov_lang": "ENU",
-      "lov_value": "Polish",
+      "lov_value": "Japanese",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -681,12 +711,12 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~PT-PT~ENU",
+     "userkey": "DEEPL_LANG~ZH~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "PT-PT",
+      "lov_code_id__lov_code": "ZH",
       "lov_lang": "ENU",
-      "lov_value": "Portuguese (all Portuguese varieties excluding Brazilian Portuguese)",
+      "lov_value": "Chinese (simplified)",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -703,12 +733,12 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~ZH~ENU",
+     "userkey": "DEEPL_LANG~NL~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "ZH",
+      "lov_code_id__lov_code": "NL",
       "lov_lang": "ENU",
-      "lov_value": "Chinese (simplified)",
+      "lov_value": "Dutch",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -725,34 +755,23 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~NL~ENU",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "NL",
-      "lov_lang": "ENU",
-      "lov_value": "Dutch",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~HU~ENU",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "HU",
-      "lov_lang": "ENU",
-      "lov_value": "Hungarian",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "FieldListValue",
      "userkey": "DEEPL_LANG~UK~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
       "lov_code_id__lov_code": "UK",
       "lov_lang": "ENU",
       "lov_value": "Ukrainian",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "DEEPL_LANG~PT-PT~ENU",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
+      "lov_code_id__lov_code": "PT-PT",
+      "lov_lang": "ENU",
+      "lov_value": "Portuguese (all Portuguese varieties excluding Brazilian Portuguese)",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -769,12 +788,12 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~CS~FRA",
+     "userkey": "DEEPL_LANG~HU~ENU",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "CS",
-      "lov_lang": "FRA",
-      "lov_value": "République tchèque",
+      "lov_code_id__lov_code": "HU",
+      "lov_lang": "ENU",
+      "lov_value": "Hungarian",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -786,6 +805,17 @@
       "lov_code_id__lov_code": "DE",
       "lov_lang": "FRA",
       "lov_value": "Allemand",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "DEEPL_LANG~CS~FRA",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
+      "lov_code_id__lov_code": "CS",
+      "lov_lang": "FRA",
+      "lov_value": "République tchèque",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -813,17 +843,6 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~RU~FRA",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "RU",
-      "lov_lang": "FRA",
-      "lov_value": "Russie",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "FieldListValue",
      "userkey": "DEEPL_LANG~PL~FRA",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
@@ -835,45 +854,12 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~ES~FRA",
+     "userkey": "DEEPL_LANG~RU~FRA",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "ES",
+      "lov_code_id__lov_code": "RU",
       "lov_lang": "FRA",
-      "lov_value": "Espagnol",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~RO~FRA",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "RO",
-      "lov_lang": "FRA",
-      "lov_value": "Roumain",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~KO~FRA",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "KO",
-      "lov_lang": "FRA",
-      "lov_value": "Coréen",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~NL~FRA",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "NL",
-      "lov_lang": "FRA",
-      "lov_value": "Néerlandais",
+      "lov_value": "Russie",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -901,6 +887,39 @@
     },
     {
      "object": "FieldListValue",
+     "userkey": "DEEPL_LANG~NL~FRA",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
+      "lov_code_id__lov_code": "NL",
+      "lov_lang": "FRA",
+      "lov_value": "Néerlandais",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "DEEPL_LANG~RO~FRA",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
+      "lov_code_id__lov_code": "RO",
+      "lov_lang": "FRA",
+      "lov_value": "Roumain",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "DEEPL_LANG~ES~FRA",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
+      "lov_code_id__lov_code": "ES",
+      "lov_lang": "FRA",
+      "lov_value": "Espagnol",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "FieldListValue",
      "userkey": "DEEPL_LANG~IT~FRA",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
@@ -912,12 +931,12 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~HU~FRA",
+     "userkey": "DEEPL_LANG~KO~FRA",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "HU",
+      "lov_code_id__lov_code": "KO",
       "lov_lang": "FRA",
-      "lov_value": "Hongrois",
+      "lov_value": "Coréen",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -945,6 +964,17 @@
     },
     {
      "object": "FieldListValue",
+     "userkey": "DEEPL_LANG~HU~FRA",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
+      "lov_code_id__lov_code": "HU",
+      "lov_lang": "FRA",
+      "lov_value": "Hongrois",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "FieldListValue",
      "userkey": "DEEPL_LANG~TR~FRA",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
@@ -956,23 +986,23 @@
     },
     {
      "object": "FieldListValue",
-     "userkey": "DEEPL_LANG~EN-US~FRA",
-     "item": {
-      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
-      "lov_code_id__lov_code": "EN-US",
-      "lov_lang": "FRA",
-      "lov_value": "Anglais (américain)",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "FieldListValue",
      "userkey": "DEEPL_LANG~PT-PT~FRA",
      "item": {
       "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
       "lov_code_id__lov_code": "PT-PT",
       "lov_lang": "FRA",
       "lov_value": "Portugais (toutes les variétés de portugais à l'exception du portugais brésilien)",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "FieldListValue",
+     "userkey": "DEEPL_LANG~EN-US~FRA",
+     "item": {
+      "lov_code_id__lov_list_id__lov_name": "DEEPL_LANG",
+      "lov_code_id__lov_code": "EN-US",
+      "lov_lang": "FRA",
+      "lov_value": "Anglais (américain)",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -1035,7 +1065,8 @@
       "fld_comment": null,
       "fld_classification": null,
       "row_module_id__mdl_name": "Deepl",
-      "fld_incrementsyntax": null
+      "fld_incrementsyntax": null,
+      "gptFldSpe": null
      }
     },
     {
@@ -1078,7 +1109,8 @@
       "fld_comment": null,
       "fld_classification": null,
       "row_module_id__mdl_name": "Deepl",
-      "fld_incrementsyntax": null
+      "fld_incrementsyntax": null,
+      "gptFldSpe": null
      }
     },
     {
@@ -1121,7 +1153,8 @@
       "fld_comment": null,
       "fld_classification": null,
       "row_module_id__mdl_name": "Deepl",
-      "fld_incrementsyntax": null
+      "fld_incrementsyntax": null,
+      "gptFldSpe": null
      }
     }
    ]
@@ -4094,40 +4127,6 @@
     },
     {
      "object": "TranslateAction",
-     "userkey": "Action(DeeTraObject)~ENU",
-     "item": {
-      "tsl_object": {
-       "item": {"act_name": "DeeTraObject"},
-       "icon": "img/system/action_btn",
-       "label": "Action",
-       "userkeylabel": "DeeTraObject",
-       "object": "Action"
-      },
-      "tsl_lang": "ENU",
-      "tsl_value": "Automatic translation by deepl",
-      "tsl_simplehelp": null,
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "TranslateAction",
-     "userkey": "Action(DeeTraObject)~FRA",
-     "item": {
-      "tsl_object": {
-       "item": {"act_name": "DeeTraObject"},
-       "icon": "img/system/action_btn",
-       "label": "Action",
-       "userkeylabel": "DeeTraObject",
-       "object": "Action"
-      },
-      "tsl_lang": "FRA",
-      "tsl_value": "Traduction automatique par deepl",
-      "tsl_simplehelp": null,
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "TranslateAction",
      "userkey": "Action(DeeTraList)~ENU",
      "item": {
       "tsl_object": {
@@ -4159,6 +4158,40 @@
       "tsl_simplehelp": null,
       "row_module_id__mdl_name": "Deepl"
      }
+    },
+    {
+     "object": "TranslateAction",
+     "userkey": "Action(DeeTraObject)~ENU",
+     "item": {
+      "tsl_object": {
+       "item": {"act_name": "DeeTraObject"},
+       "icon": "img/system/action_btn",
+       "label": "Action",
+       "userkeylabel": "DeeTraObject",
+       "object": "Action"
+      },
+      "tsl_lang": "ENU",
+      "tsl_value": "Automatic translation by deepl",
+      "tsl_simplehelp": null,
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "TranslateAction",
+     "userkey": "Action(DeeTraObject)~FRA",
+     "item": {
+      "tsl_object": {
+       "item": {"act_name": "DeeTraObject"},
+       "icon": "img/system/action_btn",
+       "label": "Action",
+       "userkeylabel": "DeeTraObject",
+       "object": "Action"
+      },
+      "tsl_lang": "FRA",
+      "tsl_value": "Traduction automatique par deepl",
+      "tsl_simplehelp": null,
+      "row_module_id__mdl_name": "Deepl"
+     }
     }
    ]
   },
@@ -4168,50 +4201,6 @@
    "icon": "img/system/translation",
    "field": "row_module_id",
    "list": [
-    {
-     "object": "TranslateField",
-     "userkey": "Field(deeTrdResult)~ENU",
-     "item": {
-      "tsl_object": {
-       "item": {"fld_name": "deeTrdResult"},
-       "icon": "img/system/field",
-       "label": "Field",
-       "userkeylabel": "deeTrdResult",
-       "object": "Field"
-      },
-      "tsl_lang": "ENU",
-      "tsl_value": "result",
-      "tsl_simplehelp": null,
-      "tsl_plural_value": null,
-      "tsl_short_value": null,
-      "tsl_placeholder": null,
-      "tsl_listhelp": null,
-      "tsl_tooltip": null,
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "TranslateField",
-     "userkey": "Field(deeTrdResult)~FRA",
-     "item": {
-      "tsl_object": {
-       "item": {"fld_name": "deeTrdResult"},
-       "icon": "img/system/field",
-       "label": "Field",
-       "userkeylabel": "deeTrdResult",
-       "object": "Field"
-      },
-      "tsl_lang": "FRA",
-      "tsl_value": "résultat",
-      "tsl_simplehelp": null,
-      "tsl_plural_value": null,
-      "tsl_short_value": null,
-      "tsl_placeholder": null,
-      "tsl_listhelp": null,
-      "tsl_tooltip": null,
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
     {
      "object": "TranslateField",
      "userkey": "Field(deeTrdLanguage)~ENU",
@@ -4247,6 +4236,50 @@
       },
       "tsl_lang": "FRA",
       "tsl_value": "Traduire en",
+      "tsl_simplehelp": null,
+      "tsl_plural_value": null,
+      "tsl_short_value": null,
+      "tsl_placeholder": null,
+      "tsl_listhelp": null,
+      "tsl_tooltip": null,
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "TranslateField",
+     "userkey": "Field(deeTrdResult)~ENU",
+     "item": {
+      "tsl_object": {
+       "item": {"fld_name": "deeTrdResult"},
+       "icon": "img/system/field",
+       "label": "Field",
+       "userkeylabel": "deeTrdResult",
+       "object": "Field"
+      },
+      "tsl_lang": "ENU",
+      "tsl_value": "result",
+      "tsl_simplehelp": null,
+      "tsl_plural_value": null,
+      "tsl_short_value": null,
+      "tsl_placeholder": null,
+      "tsl_listhelp": null,
+      "tsl_tooltip": null,
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "TranslateField",
+     "userkey": "Field(deeTrdResult)~FRA",
+     "item": {
+      "tsl_object": {
+       "item": {"fld_name": "deeTrdResult"},
+       "icon": "img/system/field",
+       "label": "Field",
+       "userkeylabel": "deeTrdResult",
+       "object": "Field"
+      },
+      "tsl_lang": "FRA",
+      "tsl_value": "résultat",
       "tsl_simplehelp": null,
       "tsl_plural_value": null,
       "tsl_short_value": null,
@@ -4310,33 +4343,33 @@
    "list": [
     {
      "object": "TranslateFieldArea",
-     "userkey": "ObjectFieldArea(DeeLanguage-1)~ENU",
+     "userkey": "ObjectFieldArea(DeeTraductionExemple-1)~ENU",
      "item": {
       "tsl_object": {
-       "item": {"ofa_name": "DeeLanguage-1"},
+       "item": {"ofa_name": "DeeTraductionExemple-1"},
        "icon": "img/system/field_area",
        "label": "Fields area",
-       "userkeylabel": "DeeLanguage-1",
+       "userkeylabel": "DeeTraductionExemple-1",
        "object": "ObjectFieldArea"
       },
       "tsl_lang": "ENU",
-      "tsl_value": "Language",
+      "tsl_value": "Translate",
       "row_module_id__mdl_name": "Deepl"
      }
     },
     {
      "object": "TranslateFieldArea",
-     "userkey": "ObjectFieldArea(DeeLanguage-1)~FRA",
+     "userkey": "ObjectFieldArea(DeeTraductionExemple-1)~FRA",
      "item": {
       "tsl_object": {
-       "item": {"ofa_name": "DeeLanguage-1"},
+       "item": {"ofa_name": "DeeTraductionExemple-1"},
        "icon": "img/system/field_area",
        "label": "Fields area",
-       "userkeylabel": "DeeLanguage-1",
+       "userkeylabel": "DeeTraductionExemple-1",
        "object": "ObjectFieldArea"
       },
       "tsl_lang": "FRA",
-      "tsl_value": "Langue",
+      "tsl_value": "Traduire",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -4374,33 +4407,33 @@
     },
     {
      "object": "TranslateFieldArea",
-     "userkey": "ObjectFieldArea(DeeTraductionExemple-1)~ENU",
+     "userkey": "ObjectFieldArea(DeeLanguage-1)~ENU",
      "item": {
       "tsl_object": {
-       "item": {"ofa_name": "DeeTraductionExemple-1"},
+       "item": {"ofa_name": "DeeLanguage-1"},
        "icon": "img/system/field_area",
        "label": "Fields area",
-       "userkeylabel": "DeeTraductionExemple-1",
+       "userkeylabel": "DeeLanguage-1",
        "object": "ObjectFieldArea"
       },
       "tsl_lang": "ENU",
-      "tsl_value": "Translate",
+      "tsl_value": "Language",
       "row_module_id__mdl_name": "Deepl"
      }
     },
     {
      "object": "TranslateFieldArea",
-     "userkey": "ObjectFieldArea(DeeTraductionExemple-1)~FRA",
+     "userkey": "ObjectFieldArea(DeeLanguage-1)~FRA",
      "item": {
       "tsl_object": {
-       "item": {"ofa_name": "DeeTraductionExemple-1"},
+       "item": {"ofa_name": "DeeLanguage-1"},
        "icon": "img/system/field_area",
        "label": "Fields area",
-       "userkeylabel": "DeeTraductionExemple-1",
+       "userkeylabel": "DeeLanguage-1",
        "object": "ObjectFieldArea"
       },
       "tsl_lang": "FRA",
-      "tsl_value": "Traduire",
+      "tsl_value": "Langue",
       "row_module_id__mdl_name": "Deepl"
      }
     }
@@ -4498,44 +4531,6 @@
    "list": [
     {
      "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplModuleTrad DMT-0100)~ENU",
-     "item": {
-      "tsl_object": {
-       "item": {
-        "acy_process_id__pcs_name": "DeeplModuleTrad",
-        "acy_step": "DMT-0100"
-       },
-       "icon": "img/system/activity",
-       "label": "Activity",
-       "userkeylabel": "DeeplModuleTrad DMT-0100",
-       "object": "BPMActivity"
-      },
-      "tsl_lang": "ENU",
-      "tsl_value": "Select module",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplModuleTrad DMT-0100)~FRA",
-     "item": {
-      "tsl_object": {
-       "item": {
-        "acy_process_id__pcs_name": "DeeplModuleTrad",
-        "acy_step": "DMT-0100"
-       },
-       "icon": "img/system/activity",
-       "label": "Activity",
-       "userkeylabel": "DeeplModuleTrad DMT-0100",
-       "object": "BPMActivity"
-      },
-      "tsl_lang": "FRA",
-      "tsl_value": "Sélectionner un module",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "TranslateActivity",
      "userkey": "BPMActivity(DeeplModuleTrad DMT-0300)~ENU",
      "item": {
       "tsl_object": {
@@ -4569,44 +4564,6 @@
       },
       "tsl_lang": "FRA",
       "tsl_value": "Traduction process",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplModuleTrad DMT-BEG)~ENU",
-     "item": {
-      "tsl_object": {
-       "item": {
-        "acy_process_id__pcs_name": "DeeplModuleTrad",
-        "acy_step": "DMT-BEG"
-       },
-       "icon": "img/system/activity",
-       "label": "Activity",
-       "userkeylabel": "DeeplModuleTrad DMT-BEG",
-       "object": "BPMActivity"
-      },
-      "tsl_lang": "ENU",
-      "tsl_value": "Begin",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplModuleTrad DMT-BEG)~FRA",
-     "item": {
-      "tsl_object": {
-       "item": {
-        "acy_process_id__pcs_name": "DeeplModuleTrad",
-        "acy_step": "DMT-BEG"
-       },
-       "icon": "img/system/activity",
-       "label": "Activity",
-       "userkeylabel": "DeeplModuleTrad DMT-BEG",
-       "object": "BPMActivity"
-      },
-      "tsl_lang": "FRA",
-      "tsl_value": "Commencer",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -4650,77 +4607,115 @@
     },
     {
      "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplObjectTra DOT-0100)~ENU",
+     "userkey": "BPMActivity(DeeplModuleTrad DMT-0200)~ENU",
      "item": {
       "tsl_object": {
        "item": {
-        "acy_process_id__pcs_name": "DeeplObjectTra",
-        "acy_step": "DOT-0100"
+        "acy_process_id__pcs_name": "DeeplModuleTrad",
+        "acy_step": "DMT-0200"
        },
        "icon": "img/system/activity",
        "label": "Activity",
-       "userkeylabel": "DeeplObjectTra DOT-0100",
+       "userkeylabel": "DeeplModuleTrad DMT-0200",
        "object": "BPMActivity"
       },
       "tsl_lang": "ENU",
-      "tsl_value": "Select translation",
+      "tsl_value": "Select lang",
       "row_module_id__mdl_name": "Deepl"
      }
     },
     {
      "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplObjectTra DOT-0100)~FRA",
+     "userkey": "BPMActivity(DeeplModuleTrad DMT-0200)~FRA",
      "item": {
       "tsl_object": {
        "item": {
-        "acy_process_id__pcs_name": "DeeplObjectTra",
-        "acy_step": "DOT-0100"
+        "acy_process_id__pcs_name": "DeeplModuleTrad",
+        "acy_step": "DMT-0200"
        },
        "icon": "img/system/activity",
        "label": "Activity",
-       "userkeylabel": "DeeplObjectTra DOT-0100",
+       "userkeylabel": "DeeplModuleTrad DMT-0200",
        "object": "BPMActivity"
       },
       "tsl_lang": "FRA",
-      "tsl_value": "Sélectionner la traduction",
+      "tsl_value": "Sélectionner la langue",
       "row_module_id__mdl_name": "Deepl"
      }
     },
     {
      "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplObjectTra DOT-0200)~ENU",
+     "userkey": "BPMActivity(DeeplModuleTrad DMT-BEG)~ENU",
      "item": {
       "tsl_object": {
        "item": {
-        "acy_process_id__pcs_name": "DeeplObjectTra",
-        "acy_step": "DOT-0200"
+        "acy_process_id__pcs_name": "DeeplModuleTrad",
+        "acy_step": "DMT-BEG"
        },
        "icon": "img/system/activity",
        "label": "Activity",
-       "userkeylabel": "DeeplObjectTra DOT-0200",
+       "userkeylabel": "DeeplModuleTrad DMT-BEG",
        "object": "BPMActivity"
       },
       "tsl_lang": "ENU",
-      "tsl_value": "language",
+      "tsl_value": "Begin",
       "row_module_id__mdl_name": "Deepl"
      }
     },
     {
      "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplObjectTra DOT-0200)~FRA",
+     "userkey": "BPMActivity(DeeplModuleTrad DMT-BEG)~FRA",
      "item": {
       "tsl_object": {
        "item": {
-        "acy_process_id__pcs_name": "DeeplObjectTra",
-        "acy_step": "DOT-0200"
+        "acy_process_id__pcs_name": "DeeplModuleTrad",
+        "acy_step": "DMT-BEG"
        },
        "icon": "img/system/activity",
        "label": "Activity",
-       "userkeylabel": "DeeplObjectTra DOT-0200",
+       "userkeylabel": "DeeplModuleTrad DMT-BEG",
        "object": "BPMActivity"
       },
       "tsl_lang": "FRA",
-      "tsl_value": "langue",
+      "tsl_value": "Commencer",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "TranslateActivity",
+     "userkey": "BPMActivity(DeeplModuleTrad DMT-0100)~ENU",
+     "item": {
+      "tsl_object": {
+       "item": {
+        "acy_process_id__pcs_name": "DeeplModuleTrad",
+        "acy_step": "DMT-0100"
+       },
+       "icon": "img/system/activity",
+       "label": "Activity",
+       "userkeylabel": "DeeplModuleTrad DMT-0100",
+       "object": "BPMActivity"
+      },
+      "tsl_lang": "ENU",
+      "tsl_value": "Select module",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "TranslateActivity",
+     "userkey": "BPMActivity(DeeplModuleTrad DMT-0100)~FRA",
+     "item": {
+      "tsl_object": {
+       "item": {
+        "acy_process_id__pcs_name": "DeeplModuleTrad",
+        "acy_step": "DMT-0100"
+       },
+       "icon": "img/system/activity",
+       "label": "Activity",
+       "userkeylabel": "DeeplModuleTrad DMT-0100",
+       "object": "BPMActivity"
+      },
+      "tsl_lang": "FRA",
+      "tsl_value": "Sélectionner un module",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -4764,77 +4759,39 @@
     },
     {
      "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplModuleTrad DMT-0200)~ENU",
-     "item": {
-      "tsl_object": {
-       "item": {
-        "acy_process_id__pcs_name": "DeeplModuleTrad",
-        "acy_step": "DMT-0200"
-       },
-       "icon": "img/system/activity",
-       "label": "Activity",
-       "userkeylabel": "DeeplModuleTrad DMT-0200",
-       "object": "BPMActivity"
-      },
-      "tsl_lang": "ENU",
-      "tsl_value": "Select lang",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplModuleTrad DMT-0200)~FRA",
-     "item": {
-      "tsl_object": {
-       "item": {
-        "acy_process_id__pcs_name": "DeeplModuleTrad",
-        "acy_step": "DMT-0200"
-       },
-       "icon": "img/system/activity",
-       "label": "Activity",
-       "userkeylabel": "DeeplModuleTrad DMT-0200",
-       "object": "BPMActivity"
-      },
-      "tsl_lang": "FRA",
-      "tsl_value": "Sélectionner la langue",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplObjectTra DOT-0400)~ENU",
+     "userkey": "BPMActivity(DeeplObjectTra DOT-0200)~ENU",
      "item": {
       "tsl_object": {
        "item": {
         "acy_process_id__pcs_name": "DeeplObjectTra",
-        "acy_step": "DOT-0400"
+        "acy_step": "DOT-0200"
        },
        "icon": "img/system/activity",
        "label": "Activity",
-       "userkeylabel": "DeeplObjectTra DOT-0400",
+       "userkeylabel": "DeeplObjectTra DOT-0200",
        "object": "BPMActivity"
       },
       "tsl_lang": "ENU",
-      "tsl_value": "Translate",
+      "tsl_value": "language",
       "row_module_id__mdl_name": "Deepl"
      }
     },
     {
      "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplObjectTra DOT-0400)~FRA",
+     "userkey": "BPMActivity(DeeplObjectTra DOT-0200)~FRA",
      "item": {
       "tsl_object": {
        "item": {
         "acy_process_id__pcs_name": "DeeplObjectTra",
-        "acy_step": "DOT-0400"
+        "acy_step": "DOT-0200"
        },
        "icon": "img/system/activity",
        "label": "Activity",
-       "userkeylabel": "DeeplObjectTra DOT-0400",
+       "userkeylabel": "DeeplObjectTra DOT-0200",
        "object": "BPMActivity"
       },
       "tsl_lang": "FRA",
-      "tsl_value": "Traduire",
+      "tsl_value": "langue",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -4878,39 +4835,77 @@
     },
     {
      "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplObjectTra DOT-BEG)~ENU",
+     "userkey": "BPMActivity(DeeplObjectTra DOT-0100)~ENU",
      "item": {
       "tsl_object": {
        "item": {
         "acy_process_id__pcs_name": "DeeplObjectTra",
-        "acy_step": "DOT-BEG"
+        "acy_step": "DOT-0100"
        },
        "icon": "img/system/activity",
        "label": "Activity",
-       "userkeylabel": "DeeplObjectTra DOT-BEG",
+       "userkeylabel": "DeeplObjectTra DOT-0100",
        "object": "BPMActivity"
       },
       "tsl_lang": "ENU",
-      "tsl_value": "Begin",
+      "tsl_value": "Select translation",
       "row_module_id__mdl_name": "Deepl"
      }
     },
     {
      "object": "TranslateActivity",
-     "userkey": "BPMActivity(DeeplObjectTra DOT-BEG)~FRA",
+     "userkey": "BPMActivity(DeeplObjectTra DOT-0100)~FRA",
      "item": {
       "tsl_object": {
        "item": {
         "acy_process_id__pcs_name": "DeeplObjectTra",
-        "acy_step": "DOT-BEG"
+        "acy_step": "DOT-0100"
        },
        "icon": "img/system/activity",
        "label": "Activity",
-       "userkeylabel": "DeeplObjectTra DOT-BEG",
+       "userkeylabel": "DeeplObjectTra DOT-0100",
        "object": "BPMActivity"
       },
       "tsl_lang": "FRA",
-      "tsl_value": "Commencer",
+      "tsl_value": "Sélectionner la traduction",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "TranslateActivity",
+     "userkey": "BPMActivity(DeeplObjectTra DOT-0400)~ENU",
+     "item": {
+      "tsl_object": {
+       "item": {
+        "acy_process_id__pcs_name": "DeeplObjectTra",
+        "acy_step": "DOT-0400"
+       },
+       "icon": "img/system/activity",
+       "label": "Activity",
+       "userkeylabel": "DeeplObjectTra DOT-0400",
+       "object": "BPMActivity"
+      },
+      "tsl_lang": "ENU",
+      "tsl_value": "Translate",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "TranslateActivity",
+     "userkey": "BPMActivity(DeeplObjectTra DOT-0400)~FRA",
+     "item": {
+      "tsl_object": {
+       "item": {
+        "acy_process_id__pcs_name": "DeeplObjectTra",
+        "acy_step": "DOT-0400"
+       },
+       "icon": "img/system/activity",
+       "label": "Activity",
+       "userkeylabel": "DeeplObjectTra DOT-0400",
+       "object": "BPMActivity"
+      },
+      "tsl_lang": "FRA",
+      "tsl_value": "Traduire",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -4951,6 +4946,44 @@
       "tsl_value": "Fin",
       "row_module_id__mdl_name": "Deepl"
      }
+    },
+    {
+     "object": "TranslateActivity",
+     "userkey": "BPMActivity(DeeplObjectTra DOT-BEG)~ENU",
+     "item": {
+      "tsl_object": {
+       "item": {
+        "acy_process_id__pcs_name": "DeeplObjectTra",
+        "acy_step": "DOT-BEG"
+       },
+       "icon": "img/system/activity",
+       "label": "Activity",
+       "userkeylabel": "DeeplObjectTra DOT-BEG",
+       "object": "BPMActivity"
+      },
+      "tsl_lang": "ENU",
+      "tsl_value": "Begin",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "TranslateActivity",
+     "userkey": "BPMActivity(DeeplObjectTra DOT-BEG)~FRA",
+     "item": {
+      "tsl_object": {
+       "item": {
+        "acy_process_id__pcs_name": "DeeplObjectTra",
+        "acy_step": "DOT-BEG"
+       },
+       "icon": "img/system/activity",
+       "label": "Activity",
+       "userkeylabel": "DeeplObjectTra DOT-BEG",
+       "object": "BPMActivity"
+      },
+      "tsl_lang": "FRA",
+      "tsl_value": "Commencer",
+      "row_module_id__mdl_name": "Deepl"
+     }
     }
    ]
   },
@@ -4960,6 +4993,38 @@
    "icon": "img/system/translation",
    "field": "row_module_id",
    "list": [
+    {
+     "object": "TranslateProcess",
+     "userkey": "BPMProcess(DeeplListTra)~ENU",
+     "item": {
+      "tsl_object": {
+       "item": {"pcs_name": "DeeplListTra"},
+       "icon": "img/system/process",
+       "label": "Business process",
+       "userkeylabel": "DeeplListTra",
+       "object": "BPMProcess"
+      },
+      "tsl_lang": "ENU",
+      "tsl_value": "Automatic translation of list values",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
+    {
+     "object": "TranslateProcess",
+     "userkey": "BPMProcess(DeeplListTra)~FRA",
+     "item": {
+      "tsl_object": {
+       "item": {"pcs_name": "DeeplListTra"},
+       "icon": "img/system/process",
+       "label": "Business process",
+       "userkeylabel": "DeeplListTra",
+       "object": "BPMProcess"
+      },
+      "tsl_lang": "FRA",
+      "tsl_value": "Automatic translation of list values",
+      "row_module_id__mdl_name": "Deepl"
+     }
+    },
     {
      "object": "TranslateProcess",
      "userkey": "BPMProcess(DeeplObjectTra)~ENU",
@@ -4989,38 +5054,6 @@
       },
       "tsl_lang": "FRA",
       "tsl_value": "Traduction automatique des objets",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "TranslateProcess",
-     "userkey": "BPMProcess(DeeplModuleTrad)~ENU",
-     "item": {
-      "tsl_object": {
-       "item": {"pcs_name": "DeeplModuleTrad"},
-       "icon": "img/system/process",
-       "label": "Business process",
-       "userkeylabel": "DeeplModuleTrad",
-       "object": "BPMProcess"
-      },
-      "tsl_lang": "ENU",
-      "tsl_value": "Automatic translation of the module",
-      "row_module_id__mdl_name": "Deepl"
-     }
-    },
-    {
-     "object": "TranslateProcess",
-     "userkey": "BPMProcess(DeeplModuleTrad)~FRA",
-     "item": {
-      "tsl_object": {
-       "item": {"pcs_name": "DeeplModuleTrad"},
-       "icon": "img/system/process",
-       "label": "Business process",
-       "userkeylabel": "DeeplModuleTrad",
-       "object": "BPMProcess"
-      },
-      "tsl_lang": "FRA",
-      "tsl_value": "Traduction automatique du module",
       "row_module_id__mdl_name": "Deepl"
      }
     },
@@ -5058,33 +5091,33 @@
     },
     {
      "object": "TranslateProcess",
-     "userkey": "BPMProcess(DeeplListTra)~ENU",
+     "userkey": "BPMProcess(DeeplModuleTrad)~ENU",
      "item": {
       "tsl_object": {
-       "item": {"pcs_name": "DeeplListTra"},
+       "item": {"pcs_name": "DeeplModuleTrad"},
        "icon": "img/system/process",
        "label": "Business process",
-       "userkeylabel": "DeeplListTra",
+       "userkeylabel": "DeeplModuleTrad",
        "object": "BPMProcess"
       },
       "tsl_lang": "ENU",
-      "tsl_value": "Automatic translation of list values",
+      "tsl_value": "Automatic translation of the module",
       "row_module_id__mdl_name": "Deepl"
      }
     },
     {
      "object": "TranslateProcess",
-     "userkey": "BPMProcess(DeeplListTra)~FRA",
+     "userkey": "BPMProcess(DeeplModuleTrad)~FRA",
      "item": {
       "tsl_object": {
-       "item": {"pcs_name": "DeeplListTra"},
+       "item": {"pcs_name": "DeeplModuleTrad"},
        "icon": "img/system/process",
        "label": "Business process",
-       "userkeylabel": "DeeplListTra",
+       "userkeylabel": "DeeplModuleTrad",
        "object": "BPMProcess"
       },
       "tsl_lang": "FRA",
-      "tsl_value": "Automatic translation of list values",
+      "tsl_value": "Traduction automatique du module",
       "row_module_id__mdl_name": "Deepl"
      }
     }

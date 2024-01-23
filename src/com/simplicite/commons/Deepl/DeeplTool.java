@@ -20,7 +20,8 @@ import kong.unirest.UnirestException;
  */
 public class DeeplTool implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
-	private static final String DEEPL_AUTH_KEY ="e24920d6-0ca4-6d8a-4803-028f19ab4d25:fx";
+	private static final String DEEPL_AUTH_KEY = Grant.getSystemAdmin().getParameter("DEEPL_API_KEY");
+	private static final String DEEPL_API_URL = Grant.getSystemAdmin().getParameter("DEEPL_API_URL");
 	private static final String JSON_KEY_TRANSLATION ="translations";
 	private static final String FIELD_LIST_OBJECT ="FieldList";
 	private static final String LOV_NAME_FIELD ="lov_name";
@@ -67,7 +68,7 @@ public class DeeplTool implements java.io.Serializable {
 			if(!Tool.isEmpty(fromLang)){
 				requestBody.put("source_lang", fromLang);
 			}
-            HttpResponse<JsonNode> response = Unirest.post("https://api-free.deepl.com/v2/translate")
+            HttpResponse<JsonNode> response = Unirest.post(DEEPL_API_URL)
 					.header("Authorization", "DeepL-Auth-Key " + DEEPL_AUTH_KEY)
                     //.header("User-Agent", "deeplSimplicite/1.2.3")
 					.header("Content-Type", "application/json")
